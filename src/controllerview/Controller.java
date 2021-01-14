@@ -38,22 +38,27 @@ public class Controller {
 
     @FXML
     public void searchFor(){
+        double start = System.currentTimeMillis();
         LinkedList<Vehicle> result = cardb.search(txt.getText(), false);
         txtArea.setText("");
         for (int i = 0; i < result.size(); i++) {
             if (result.get(i) != null)
             txtArea.appendText(result.get(i).toString() + "\n");
         }
+        double end = System.currentTimeMillis();
+        System.out.println("Run Time:" + (end - start) + "milli-sec.");
     }
 
     @FXML
     public void searchExact(){
+        double start = System.currentTimeMillis();
         LinkedList<Vehicle> result = cardb.search(txt.getText(), true);
         txtArea.setText("");
         for (int i = 0; i < result.size(); i++) {
             if (result.get(i) != null)
             txtArea.setText(result.get(i).toString() + "\n");
         }
-    }
-
+            double end = System.currentTimeMillis();
+            System.out.println("Run Time:" + (end - start) + "milli-sec.");
+        }
 }
